@@ -1,0 +1,44 @@
+$SM: 576px;
+$MD: 992px;
+$L: 1200px;
+$XL: 1400px;
+
+// media queries
+
+@mixin Responsive($canvas) {
+  @if $canvas == SM {
+    @media (min-width: $SM) {
+      @content;
+    }
+  } @else if $canvas == MD {
+    @media (min-width: $MD) {
+      @content;
+    }
+  } @else if $canvas == L {
+    @media (min-width: $L) {
+      @content;
+    }
+  } @else if $canvas == XL {
+    @media (min-width: $XL) {
+      @content;
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  @include Responsive(SM) {
+    max-width: 540px;
+  }
+  @include Responsive(MD) {
+    max-width: 720px;
+  }
+  @include Responsive(L) {
+    max-width: 1140px;
+  }
+  @include Responsive(XL) {
+    max-width: 1320px;
+  }
+}
