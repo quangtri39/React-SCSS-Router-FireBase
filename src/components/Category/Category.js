@@ -3,16 +3,16 @@ import ProductItem from "../ProductItem/ProductItem";
 import "./Category.scss";
 export default function Category({ nameCate, isHomeMain }) {
   const [categoriesItems, setCategoriesItems] = useState([]);
+  const [status, setStatus] = useState("loading");
 
   useEffect(() => {
-    console.log(nameCate);
     const getCategoryItems = async function () {
       const res = await fetch(
         `https://fakestoreapi.com/products/category/${nameCate}`
       );
       const category = await res.json();
       setCategoriesItems(category);
-      console.log(category);
+      setStatus("done");
     };
     getCategoryItems();
   }, [nameCate]);
@@ -23,13 +23,14 @@ export default function Category({ nameCate, isHomeMain }) {
     }
     return categoriesItems;
   };
-  return (
+  return status === "done" ? (
     <div className="category">
       <div className="category-title">{nameCate}</div>
       <div className="category-items">
         {renderItems().map(({ id, title, image, description, price }) => (
           <ProductItem
             key={id}
+            id={id}
             title={title}
             img={image}
             text={description}
@@ -38,5 +39,5 @@ export default function Category({ nameCate, isHomeMain }) {
         ))}
       </div>
     </div>
-  );
+  ) : null;
 }

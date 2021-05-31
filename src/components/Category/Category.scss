@@ -5,6 +5,7 @@
     font-weight: bold;
     font-size: 2rem;
     margin-bottom: 1rem;
+    text-align: center;
   }
   &-items {
     display: flex;
@@ -12,5 +13,6 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    gap: 2rem;
   }
 }
