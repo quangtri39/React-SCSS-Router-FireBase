@@ -6,24 +6,22 @@ import { Switch, Route } from "react-router-dom";
 import SignInAndSignUp from "./layout/SignInAndSignUp/SignInAndSignUp";
 
 import { useEffect } from "react";
-import { auth } from "./firebase/firebase";
+import { auth, createUserProfileDocument } from "./firebase/firebase";
 import { useDispatch } from "react-redux";
 import { setcurrentUser } from "./redux/user";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    const unsubcribefromAuth = auth.onAuthStateChanged((user) => {
-      let currUser = null;
-      if (user != null) {
-        currUser = {
-          displayName: user.displayName,
-          email: user.email,
-          uid: user.uid,
-          photoURL: user.photoURL,
-        };
+    const unsubcribefromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot((snapShot) => {
+          dispatch(setcurrentUser({ id: snapShot.id, ...snapShot.data() }));
+        });
+      } else {
+        dispatch(setcurrentUser(null));
       }
-      dispatch(setcurrentUser(currUser));
     });
     return () => {
       unsubcribefromAuth();
