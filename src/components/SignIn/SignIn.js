@@ -1,9 +1,19 @@
 import "./SignIn.scss";
-import { signInWithGoogle } from "../../firebase/firebase";
+import { auth, signInWithGoogle } from "../../firebase/firebase";
 
 export default function SignIn() {
-  const handleSummit = (e) => {
-    e.preventDefault();
+  const handleSummit = async (event) => {
+    event.preventDefault();
+    const { SIemail, SIpassword } = event.target.elements;
+    const email = SIemail.value;
+    const pass = SIpassword.value;
+    try {
+      await auth.signInWithEmailAndPassword(email, pass);
+      SIemail.value = "";
+      SIpassword.value = "";
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="signIn">
