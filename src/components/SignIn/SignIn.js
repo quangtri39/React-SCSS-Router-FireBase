@@ -1,5 +1,7 @@
 import "./SignIn.scss";
 import { auth, signInWithGoogle } from "../../firebase/firebase";
+import Input from "../Input/Input";
+import Button from "../Button/Button";
 
 export default function SignIn() {
   const handleSummit = async (event) => {
@@ -19,17 +21,20 @@ export default function SignIn() {
     <div className="signIn">
       <h2>Sign In</h2>
       <form onSubmit={handleSummit} className="form-sign-in">
-        <label htmlFor="SIemail">Email</label>
-        <input type="email" id="SIemail" placeholder="Email" />
-        <label htmlFor="SIpassword">Password</label>
-        <input type="password" id="SIpassword" placeholder="Password" />
+        <Input type="email" text="email" id="SIemail" placeholder="Email" />
+        <Input
+          type="password"
+          text="Password"
+          id="SIpassword"
+          placeholder="Password"
+        />
         <div className="btn-group">
-          <button type="submit" className="btn btn-primary">
+          <Button type="submit" className="btn-primary">
             Sign In
-          </button>
-          <button onClick={signInWithGoogle} className="btn btn-primary">
+          </Button>
+          <Button onClick={signInWithGoogle} className="btn-primary">
             Sign In with Google
-          </button>
+          </Button>
         </div>
       </form>
     </div>

@@ -1,4 +1,6 @@
 import { auth, createUserProfileDocument } from "../../firebase/firebase";
+import Input from "../Input/Input";
+import Button from "../Button/Button";
 import "./SignUp.scss";
 export default function SignUp() {
   const handleSummit = async (event) => {
@@ -27,27 +29,37 @@ export default function SignUp() {
     <div className="signUp">
       <h2>Sign Up</h2>
       <form onSubmit={handleSummit} className="form-sign-up">
-        <label htmlFor="SUname">Name</label>
-        <input required type="text" id="SUname" placeholder="Your Name" />
-        <label htmlFor="SUemail">Email</label>
-        <input required type="email" id="SUemail" placeholder="Email" />
-        <label htmlFor="SUpassword">Password</label>
-        <input
+        <Input
+          required
+          type="text"
+          text="Name"
+          id="SUname"
+          placeholder="Your Name"
+        />
+        <Input
+          required
+          type="email"
+          text="Email"
+          id="SUemail"
+          placeholder="Email"
+        />
+        <Input
           required
           type="password"
+          text="Password"
           id="SUpassword"
           placeholder="Password"
         />
-        <label htmlFor="SUrepassword">RePassword</label>
-        <input
+        <Input
           required
           type="password"
           id="SUrepassword"
+          text="RePassword"
           placeholder="RePassword"
         />
-        <button type="submit" className="btn btn-primary">
+        <Button type="submit" className="btn btn-primary">
           SignUp
-        </button>
+        </Button>
       </form>
     </div>
   );
