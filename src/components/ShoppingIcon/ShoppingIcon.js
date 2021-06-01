@@ -7,7 +7,7 @@ export default function ShoppingIcon({ width = "3rem", height = "3rem" }) {
   const { cartItems } = useSelector((state) => state.cart);
 
   const cartCount = cartItems.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.count,
+    (accumulator, currentValue) => accumulator + currentValue.quantity,
     0
   );
   const handleClick = () => {

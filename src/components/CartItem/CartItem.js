@@ -1,5 +1,5 @@
 import "./CartItem.scss";
-export default function CartItem({ item: { img, title, price, count } }) {
+export default function CartItem({ item: { img, title, price, quantity } }) {
   title = title.length > 20 ? title.slice(0, 17) + "..." : title;
   return (
     <div className="cart-item">
@@ -7,7 +7,7 @@ export default function CartItem({ item: { img, title, price, count } }) {
       <div className="item-details">
         <span className="name">{title}</span>
         <span className="price">
-          {count} x {price}
+          {quantity} x {price}
         </span>
       </div>
     </div>

@@ -1,0 +1,25 @@
+.img-product {
+  height: 7rem;
+}
+.delete-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
+}
+.increase,
+.decrease {
+  height: 1.5rem;
+  width: 1.5rem;
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
+}
+.quantity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
