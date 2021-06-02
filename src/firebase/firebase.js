@@ -41,6 +41,22 @@ provider.setCustomParameters({ prompt: "select_account" });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 export default firebase;
 
+export const convertCollectionsSnapshotToMap = (collectionsSnapshot) => {
+  const transformedCollection = collectionsSnapshot.docs.map((docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: docSnapshot.id,
+      title,
+      items,
+    };
+  });
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+};
+
 // apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
 // authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
 // projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,

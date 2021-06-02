@@ -1,43 +1,19 @@
-import { useState, useEffect } from "react";
-import ProductItem from "../ProductItem/ProductItem";
+import ItemOverview from "../ItemOverview/ItemOverview";
 import "./Category.scss";
-export default function Category({ nameCate, isHomeMain }) {
-  const [categoriesItems, setCategoriesItems] = useState([]);
-  const [status, setStatus] = useState("loading");
 
-  useEffect(() => {
-    const getCategoryItems = async function () {
-      const res = await fetch(
-        `https://fakestoreapi.com/products/category/${nameCate}`
-      );
-      const category = await res.json();
-      setCategoriesItems(category);
-      setStatus("done");
-    };
-    getCategoryItems();
-  }, [nameCate]);
-
-  const renderItems = () => {
-    if (isHomeMain) {
-      return categoriesItems.slice(0, 4);
-    }
-    return categoriesItems;
-  };
-  return status === "done" ? (
+export default function Category({ nameCate, items }) {
+  return (
     <div className="category">
       <div className="category-title">{nameCate}</div>
       <div className="category-items">
-        {renderItems().map(({ id, title, image, description, price }) => (
-          <ProductItem
-            key={id}
-            id={id}
-            title={title}
-            img={image}
-            text={description}
-            price={price}
-          />
-        ))}
+        {items.length > 0 ? <ItemOverview items={items} maxItem={4} /> : null}
       </div>
     </div>
-  ) : null;
+  );
 }
+// them data vao firebase
+// const addCateItems = (nameCate, objectAdd) => {
+//   const categoryRef = firestore.collection("category");
+//   const newDocRef = categoryRef.doc();
+//   newDocRef.set({ title: nameCate, items: objectAdd });
+// };

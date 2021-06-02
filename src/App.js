@@ -9,9 +9,11 @@ import SignInAndSignUp from "./layout/SignInAndSignUp/SignInAndSignUp";
 import Checkout from "./components/Checkout/Checkout";
 
 import useFirebaseAuth from "./hook/useFirebaseAuth";
+import useCategoryFirebase from "./hook/useCategoryFirebase";
 
 function App() {
   useFirebaseAuth();
+  useCategoryFirebase();
   const { currentUser } = useSelector((state) => state.user);
 
   return (
