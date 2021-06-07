@@ -17,22 +17,24 @@ export default function CheckoutItem({ item }) {
     dispatch(removeItem(item));
   };
   return (
-    <tr>
-      <td>
-        <img src={img} alt="product" className="img-product" />
-      </td>
-      <td>{title}</td>
-      <td>
-        <div className="quantity">
-          <Decrease className="increase" onClick={handleDecrease} />
-          <span>{quantity}</span>
-          <Increase className="decrease" onClick={handleIncrease} />
-        </div>
-      </td>
-      <td>{price}</td>
-      <td>
-        <DeleteIcon className="delete-icon" onClick={handleDelete} />
-      </td>
-    </tr>
+    <tbody>
+      <tr>
+        <td>
+          <img src={img} alt="product" className="img-product" />
+        </td>
+        <td>{title}</td>
+        <td>
+          <div className="quantity">
+            <Decrease className="increase" onClick={handleDecrease} />
+            <span>{quantity}</span>
+            <Increase className="decrease" onClick={handleIncrease} />
+          </div>
+        </td>
+        <td>{price}</td>
+        <td>
+          <DeleteIcon className="delete-icon" onClick={handleDelete} />
+        </td>
+      </tr>
+    </tbody>
   );
 }

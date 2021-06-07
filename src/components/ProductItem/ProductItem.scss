@@ -19,15 +19,23 @@ $img-height: 8rem;
   &-container {
     flex: 1 1 auto;
     padding: 1rem 1rem;
+    width: 100%;
   }
   &-title {
     font-weight: bold;
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &-text {
     margin-top: 0;
     margin-bottom: 2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   img {
     height: $img-height;

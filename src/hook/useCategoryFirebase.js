@@ -18,3 +18,9 @@ export default function useCategoryFirebase() {
     };
   }, [dispatch]);
 }
+// them data vao firebase
+// const addCateItems = ( objectAdd) => {
+//   const categoryRef = firestore.collection("products");
+//   const newDocRef = categoryRef.doc();
+//   newDocRef.set({ items: objectAdd });
+// };

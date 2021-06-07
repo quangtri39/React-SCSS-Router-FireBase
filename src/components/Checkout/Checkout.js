@@ -11,13 +11,15 @@ export default function Checkout() {
   return (
     <div className="checkout-container">
       <table className="checkout">
-        <tr>
-          <th style={{ width: "7rem" }}>Product</th>
-          <th>Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th></th>
-        </tr>
+        <tbody>
+          <tr>
+            <th style={{ width: "7rem" }}>Product</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </tbody>
         {cartItems.map((cartItem) => (
           <CheckoutItem key={cartItem.id} item={cartItem} />
         ))}
